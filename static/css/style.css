@@ -1,0 +1,32 @@
+body.neon-hacker {
+    background-color: black;
+    color: #39ff14;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    padding: 20px;
+}
+
+h1, h2 {
+    text-shadow: 0 0 5px #39ff14, 0 0 10px #39ff14;
+}
+
+.login-container {
+    margin: 50px auto;
+    width: 300px;
+}
+
+input, button {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #39ff14;
+    background: black;
+    color: #39ff14;
+    font-size: 16px;
+}
+
+button:hover {
+    background: #39ff14;
+    color: black;
+    cursor: pointer;
+}
