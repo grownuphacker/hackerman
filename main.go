@@ -5,10 +5,8 @@ import (
 	"encoding/csv"
 	"fmt"
 	"html/template"
-	"io/ioutil"
 	"net/http"
 	"os"
-	"strings"
 )
 
 type User struct {
@@ -55,6 +53,10 @@ func loginPage(w http.ResponseWriter, r *http.Request) {
 	username := r.FormValue("username")
 	password := hashPassword(r.FormValue("password"))
 
+	fmt.Printf("Username: %s\n", username)
+	fmt.Printf("Hashed Password: %s\n", password)
+	fmt.Printf("Expected Hash: %s\n", users[username])
+
 	if storedPassword, exists := users[username]; exists && storedPassword == password {
 		switch username {
 		case "hackerman":
@@ -85,7 +87,7 @@ func architecturePage(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	loadUsers("users.txt")
+	loadUsers("users.secure")
 
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 	http.HandleFunc("/", loginPage)
